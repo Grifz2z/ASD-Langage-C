@@ -1,26 +1,32 @@
+/*
+Anton Alvarez Martinez
+10/2025
+Implémentation de listes chaînées en C
+*/
+
 #ifndef LISTE_H
 #define LISTE_H
 
 #include <stdbool.h>
 
 // ─────────────────────────────
-// Définition des structures
+// Structures
 // ─────────────────────────────
 
-// Maillon d’une liste chaînée
+// Maillon de la liste chaînée
 typedef struct sNode {
-    int data;
-    struct sNode *next;
+    int data;              // Valeur du maillon
+    struct sNode *next;    // Pointeur vers le prochain maillon
 } Node;
 
-// Liste chaînée contenant un pointeur vers la tête et sa taille
+// Structure représentant la liste
 typedef struct {
-    Node *tete;
-    int taille;
+    Node *tete;    // Premier maillon
+    int taille;    // Taille de la liste
 } Liste;
 
 // ─────────────────────────────
-// Prototypes de fonctions
+// Fonctions de base
 // ─────────────────────────────
 
 // Initialise une liste vide
@@ -35,10 +41,16 @@ bool est_vide(Liste lst);
 // Ajoute un élément en tête de liste
 void ajouter_tete(Liste *lst, int elt);
 
-// Renvoie une chaîne représentant la liste (penser à free après usage)
+// Supprime et renvoie l’élément en tête de liste
+int pop_tete(Liste *lst);
+
+// Supprime et renvoie l’élément à l’indice i (0 = tête)
+int pop(Liste *lst, int i);
+
+// Renvoie une représentation textuelle de la liste (penser à free)
 char *str_liste(Liste *lst);
 
-// Remplit la liste avec un exemple de valeurs
+// Remplit la liste avec des valeurs d’exemple
 void exemple(Liste *lst);
 
 #endif // LISTE_H
